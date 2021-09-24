@@ -46,7 +46,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Release
-      run: mvn release:clean release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -DpushChanges=false
+      run: mvn -DdryRun=true release:clean release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -DpushChanges=false
     - name: Commit release changes
       run: |
         git add .
