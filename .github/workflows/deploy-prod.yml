@@ -20,8 +20,9 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Pull changes from Dev
       run: |
-        git config --local user.email ""action@github.com""
+        git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git branch
         git pull dev
     - name: Push changes
       uses: ad-m/github-push-action@master
@@ -32,7 +33,7 @@ jobs:
   build-backend:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
+    needs: get-changes
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 8
@@ -47,7 +48,7 @@ jobs:
   build-frontend:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
+    needs: get-changes
     steps:
       - name: Build with Maven
         run: echo Frontend
