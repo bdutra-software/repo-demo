@@ -5,7 +5,7 @@ on:
     branches: [ dev ]
  
 jobs:
-  build:
+  build-backend:
 
     runs-on: ubuntu-latest
 
@@ -19,12 +19,30 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
-  deploy-dev:
+  
+  build-frontend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build with Maven
+        run: echo Frontend
+  
+  deploy-dev-backend:
   
     runs-on: ubuntu-latest
     environment: dev
-    needs: build
+    needs: build-backend
     steps:
       - name: Deploy
-        run: echo Hello, Dev
+        run: echo Dev, Backend
+
+
+  deploy-dev-frontend:
+  
+    runs-on: ubuntu-latest
+    environment: dev
+    needs: build-frontend
+    steps:
+      - name: Deploy
+        run: echo Dev, Frontend
