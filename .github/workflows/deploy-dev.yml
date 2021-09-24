@@ -22,9 +22,10 @@ jobs:
       
   deploy-dev:
   
-    runs-on: 'ubuntu-latest'
-    environment: 'dev'
+    runs-on: ubuntu-latest
+    environment: dev
     needs: build
     steps:
+      - uses: actions/checkout@v2
       - name: Deploy
       - run: echo Hello, Dev
