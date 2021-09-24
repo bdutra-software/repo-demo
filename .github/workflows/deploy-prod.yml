@@ -1,11 +1,11 @@
-name: Deploy Prod
+name: Produção
 
 on:
   push:
     branches: [ main ]
  
 jobs:
-  build:
+  build-backend:
 
     runs-on: ubuntu-latest
 
@@ -19,12 +19,30 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
-  deploy-prod:
+  
+  build-frontend:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build with Maven
+        run: echo Frontend
+  
+  deploy-dev-backend:
   
     runs-on: ubuntu-latest
     environment: prod
-    needs: build
+    needs: build-backend
     steps:
       - name: Deploy
-        run: echo Hello, Prod
+        run: echo Prod, Backend
+
+
+  deploy-dev-frontend:
+  
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: build-frontend
+    steps:
+      - name: Deploy
+        run: echo Prod, Frontend
