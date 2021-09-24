@@ -16,7 +16,7 @@
 	<scm>
 		<url>https://https://github.com/bdutra-software/repo-demo</url>
 		<connection>scm:git:https://github.com/bdutra-software/repo-demo.git</connection>
-      		<tag>repo-demo-1.0.0</tag>
+      		<tag>${project.version}</tag>
   	</scm>
 	
 	<properties>
