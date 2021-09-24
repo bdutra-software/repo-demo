@@ -13,6 +13,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>repo-demo</name>
 	<description>Demo project for Spring Boot</description>
+	
+	<scm>
+		<url>https://https://github.com/bdutra-software/repo-demo</url>
+		<connection>scm:git:https://github.com/bdutra-software/repo-demo.git</connection>
+      		<tag>HEAD</tag>
+  	</scm>
+	
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
