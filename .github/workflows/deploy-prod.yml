@@ -1,9 +1,13 @@
 name: Produção
 
 on:
-  push:
-    branches: [ main ]
- 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+      tags:
+        description: 'Tags' 
+        
 jobs:
   build-backend:
 
