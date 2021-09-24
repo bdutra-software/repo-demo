@@ -35,6 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - name: Set git user
       run: |
         git config --local user.email "action@github.com"
@@ -46,13 +49,8 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Release
-      run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -DpushChanges=false -DbranchName=main
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        branch: ${{ github.ref }}   
-    
+      run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -Dusername=brunodutr -Dpassword=${{ secrets.TOKEN }}
+   
   build-backend:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
