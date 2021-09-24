@@ -26,4 +26,5 @@ jobs:
     needs: build
     steps:
       - name: Deploy
-      - run: echo "Hello Dev"
+      - uses: actions/checkout@v2
+      - run: echo Hello, Dev
