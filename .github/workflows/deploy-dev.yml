@@ -26,6 +26,5 @@ jobs:
     environment: dev
     needs: build
     steps:
-      - uses: actions/checkout@v2
       - name: Deploy
-      - run: echo Hello, Dev
+        run: echo Hello, Dev
