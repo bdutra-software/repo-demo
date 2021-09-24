@@ -21,10 +21,10 @@ jobs:
       run: mvn -B package --file pom.xml
       
   deploy-dev:
+  
     runs-on: 'ubuntu-latest'
     environment: 'dev'
     needs: build
     steps:
       - name: Deploy
-      - uses: actions/checkout@v2
       - run: echo Hello, Dev
