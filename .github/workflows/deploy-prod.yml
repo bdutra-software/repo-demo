@@ -47,10 +47,6 @@ jobs:
         cache: maven
     - name: Release
       run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -DpushChanges=false -DbranchName=main
-    - name: Commit release changes
-      run: |
-        git add .
-        git commit -am "Release version: ${{ github.event.inputs.version }} [ci-skip]"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
