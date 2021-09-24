@@ -42,7 +42,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Release
-      run: mvn release:clean release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} 
+      run: mvn release:clean release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true"
     
   build-backend:
     if: github.ref == 'refs/heads/main'
