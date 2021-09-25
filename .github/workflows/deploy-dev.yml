@@ -6,19 +6,20 @@ on:
  
 jobs:
 
-
-  build-backend:
-
+  cancel-runs:
+    if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"
     runs-on: ubuntu-latest
 
     steps:
     - name: Cancel Previous Runs
       uses: styfle/cancel-workflow-action@0.9.1
-      with:
-        access_token: ${{ secrets.TOKEN }}
-    - uses: mstachniuk/ci-skip@master
-      with:
-        commit-filter: '[maven-release-plugin]'
+
+  build-backend:
+    if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"    
+    needs: cancel-runs
+    runs-on: ubuntu-latest
+    
+    steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 8
       uses: actions/setup-java@v2
@@ -30,38 +31,27 @@ jobs:
       run: mvn -B package --file pom.xml
   
   build-frontend:
-
+    if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"
+    needs: cancel-runs
     runs-on: ubuntu-latest
-
     steps:
       - name: Build with Maven
         run: echo Frontend
-      - uses: mstachniuk/ci-skip@master
-        with:
-          commit-filter: '[maven-release-plugin]'
-
   
   deploy-dev-backend:
-  
+    if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"
     runs-on: ubuntu-latest
     environment: dev
     needs: build-backend
     steps:
       - name: Deploy
         run: echo Dev, Backend
-      - uses: mstachniuk/ci-skip@master
-        with:
-          commit-filter: '[maven-release-plugin]'
-
 
   deploy-dev-frontend:
-  
+    if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"
     runs-on: ubuntu-latest
     environment: dev
     needs: build-frontend
     steps:
       - name: Deploy
         run: echo Dev, Frontend
-      - uses: mstachniuk/ci-skip@master
-        with:
-          commit-filter: '[maven-release-plugin]'
