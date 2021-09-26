@@ -51,6 +51,10 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
         cache: maven
+    - name: Configure Maven
+    - uses: s4u/maven-settings-action@v2.4.1
+      with:
+        servers: '[{"id": "github", "username": "${{ secrets.USER }}", "password": "${{ secrets.TOKEN }}"}]'    
     - name: Release
       run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DtagNameFormat=v${{ github.event.inputs.version }} -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Dusername=brunodutr -Dpassword=${{ secrets.TOKEN }}
     - name: Push changes
