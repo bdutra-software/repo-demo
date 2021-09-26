@@ -52,7 +52,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Configure Maven
-    - uses: s4u/maven-settings-action@v2.4.1
+      uses: s4u/maven-settings-action@v2.4.1
       with:
         servers: '[{"id": "github", "username": "${{ secrets.USER }}", "password": "${{ secrets.TOKEN }}"}]'    
     - name: Release
