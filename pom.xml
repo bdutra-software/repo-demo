@@ -52,4 +52,12 @@
 		</plugins>
 	</build>
 
+	  <servers>
+	    <server>
+	      <id>github</id>
+	      <username>${env.USER}</username>
+	      <password>${env.TOKEN}</password>
+	    </server>
+	  </servers>
+	
 </project>
