@@ -9,14 +9,14 @@
 	</parent>
 	<groupId>com.github.brunodutr</groupId>
 	<artifactId>repo-demo</artifactId>
-	<version>1.14.0-SNAPSHOT</version>
+	<version>1.14.0</version>
 	<name>repo-demo</name>
 	<description>Demo project for Spring Boot</description>
 	
 	<scm>
 		<url>https://https://github.com/bdutra-software/repo-demo</url>
 		<connection>scm:git:https://github.com/bdutra-software/repo-demo.git</connection>
-      		<tag>${project.version}</tag>
+      		<tag>v1.14.0</tag>
   	</scm>
 	
 	<distributionManagement>
