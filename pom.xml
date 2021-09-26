@@ -23,7 +23,7 @@
 	   <repository>
 	     <id>github</id>
 	     <name>GitHub OWNER Apache Maven Packages</name>
-	     <url>https://maven.pkg.github.com/brunodutr/repo-demo</url>
+	     <url>https://maven.pkg.github.com/bdutra-software/repo-demo</url>
 	   </repository>
 	</distributionManagement>
 	
