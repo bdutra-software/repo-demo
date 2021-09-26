@@ -50,7 +50,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Release
-      run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DtagNameFormat=v${{ github.event.inputs.version }} -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Darguments="-Dmaven.deploy.skip=true" -Dusername=brunodutr -Dpassword=${{ secrets.TOKEN }}
+      run: mvn release:clean release:prepare release:perform -DlocalCheckout=true -DtagNameFormat=v${{ github.event.inputs.version }} -DreleaseVersion=${{ github.event.inputs.version }} -DdevelopmentVersion=${{ github.event.inputs.dev-version }} -Dusername=brunodutr -Dpassword=${{ secrets.TOKEN }}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
