@@ -39,8 +39,9 @@ jobs:
     steps:
       steps:
       - uses: actions/checkout@v2
-      - name: Build with NPM
+      - name: Setup Node
         uses: actions/setup-node@v2.4.0
+      - name: Build with NPM
         run: |
           cd frontend
           npm run test
