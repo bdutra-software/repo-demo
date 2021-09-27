@@ -37,7 +37,10 @@ jobs:
     needs: cancel-runs
     runs-on: ubuntu-latest
     steps:
-      - name: Build with Maven
+      steps:
+      - uses: actions/checkout@v2
+      - name: Build with NPM
+        uses: actions/setup-node@v2.4.0
         run: |
           cd frontend
           npm run test
