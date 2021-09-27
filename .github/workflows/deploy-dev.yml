@@ -42,15 +42,13 @@ jobs:
         uses: actions/setup-node@v2.4.0
         with:
           cache: 'npm'
+        run: cd frontend
       - name: Install
-        run: | 
-          cd frontend
-          npm install
+        run: npm install
       - name: Test
-        run: |
-          npm run test
+        run: npm run test
       - name: Build
-          npm run build --prod          
+        run: npm run build --prod          
   
   deploy-dev-backend:
     if: "!contains(github.event.head_commit.message, '[maven-release-plugin]')"
