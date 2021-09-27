@@ -46,7 +46,7 @@ jobs:
       - name: Install
         run: cd frontend && npm install
       - name: Test
-        run: cd frontend && npm run test
+        run: cd frontend && npm run test --browsers=ChromeHeadless --watch=false --code-coverage
       - name: Build
         run: cd frontend && npm run build --prod          
   
