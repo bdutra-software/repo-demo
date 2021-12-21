@@ -53,13 +53,10 @@ jobs:
               {
                "title":"Deploy", 
                "color":1127128, 
-               "description": 
-                    "Deploy: Homologação\n
-                    Branch: ${{ github.event.inputs.branch }}\n\n
-                    
-                    ${{ github.event.inputs.backend    == 'true' && ':white_check_mark:' || ':x:' }} Back-end\n
-                    ${{ github.event.inputs.frontend   == 'true' && ':white_check_mark:' || ':x:' }} Front-end\n
-                    ${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }} Migrations"
+               "description": "
+                    Deploy: Homologação\n
+                    Branch: ${{ github.event.inputs.branch }}\n\n                 
+                    "
               }
             ]
         uses: Ilshidur/action-discord@master
