@@ -12,6 +12,10 @@ jobs:
   deploy_back_end:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/setup-java@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.inputs.branch }}
