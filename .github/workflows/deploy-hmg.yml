@@ -20,9 +20,9 @@ jobs:
   discord_notification:
       runs-on: ubuntu-latest
       steps:
-      - name: send message
-        uses: appleboy/discord-action@master
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj
+        uses: Ilshidur/action-discord@master
         with:
-          webhook_id: 922863787365781524
-          webhook_token: HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj
-          args: "Branch: ${{ github.event.inputs.branch }}"
+          args: 'Branch: ${{ github.event.inputs.branch }} has been deployed.'
