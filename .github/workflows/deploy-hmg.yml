@@ -9,11 +9,20 @@ on:
         default: 'hmg'
  
 jobs:
-  printInputs:
+  deploy_back_end:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "Branch: ${{ github.event.inputs.branch }}"
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.inputs.branch }}
+    - run: |
+        echo "Branch: ${{ github.event.inputs.branch }}"
+  discord_notification:
+      runs-on: ubuntu-latest
+      steps:
+      - name: send message
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: 922863787365781524
+          webhook_token: HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj
+          args: "Branch: ${{ github.event.inputs.branch }}"
