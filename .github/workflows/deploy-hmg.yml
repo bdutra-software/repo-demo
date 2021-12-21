@@ -79,5 +79,5 @@ jobs:
                   }               
                 ]
               }]
-          DISCORD_EMBEDS: ${{ toJson(env.DISCORD_MESSAGE) }}
+          DISCORD_EMBEDS: ${{ toJSON(env.DISCORD_MESSAGE) }}
         uses: Ilshidur/action-discord@master
