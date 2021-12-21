@@ -31,10 +31,6 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.inputs.branch }}
-    - name: Dump GitHub context
-      env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-      run: echo "$GITHUB_CONTEXT"
     - uses: actions/setup-java@v2
       with:
         java-version: '11'
