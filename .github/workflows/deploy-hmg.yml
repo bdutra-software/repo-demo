@@ -52,7 +52,7 @@ jobs:
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj       
           DISCORD_EMBEDS: |
-            { "embeds": [{
+              '[{
                 "title": "Notificação Deployment",
                 "color": 1127128,
                 "fields": [{
@@ -78,6 +78,5 @@ jobs:
                     "value": "${{ env.DISCORD_MIGRATIONS }}"
                   }               
                 ]
-              }]
-            }
+              }]'
         uses: Ilshidur/action-discord@master
