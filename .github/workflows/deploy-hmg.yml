@@ -52,5 +52,5 @@ jobs:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj      
-          DISCORD_EMBEDS: '[{ "title": "Notificação Deployment", "color": 1127128, "fields": [{ "name": "Deploy", "value": "Homologação", "inline": true }, { "name": "Branch", "value": "${{ github.event.inputs.branch }}", "inline": true }, { "name": "Back-end", "value": "${{ env.DISCORD_BACKEND }}" }, { "name": "Front-end", "value": "${{ env.DISCORD_FRONTEND }}" }, { "name": "Migrations", "value": "${{ env.DISCORD_MIGRATIONS }}" } ] }]'
+          DISCORD_EMBEDS: '[{ "title": "Notificação Deployment", "color": 1127128, "fields": [{ "name": "Deploy", "value": "Homologação", "inline": true }, { "name": "Branch", "value": "${{ github.event.inputs.branch }}", "inline": true }], "description": "\n\n${{ env.DISCORD_BACKEND }} Back-end\n ${{ env.DISCORD_FRONTEND }} Front-end\n${{ env.DISCORD_MIGRATIONS }} Migrations" }]'
         uses: Ilshidur/action-discord@master
