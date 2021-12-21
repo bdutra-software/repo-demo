@@ -20,35 +20,10 @@ on:
         description: 'Migrations'
         default: 'false'
 env:
-  DISCORD_MESSAGE: |
-      [{
-        "title": "Notificação Deployment",
-        "color": 1127128,
-        "fields": [{
-            "name": "Deploy",
-            "value": "Homologação",
-            "inline": true
-          },
-          {
-            "name": "Branch",
-            "value": "${{ github.event.inputs.branch }}",
-            "inline": true
-          },
-          {
-            "name": "Back-end",
-            "value": "${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}"
-          },
-          {
-            "name": "Front-end",
-            "value": "${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}"
-          },
-          {
-            "name": "Migrations",
-            "value": "${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}"
-          }               
-        ]
-      }] 
-
+  DISCORD_BACKEND: ${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}
+  DISCORD_FRONTEND: ${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}
+  DISCORD_MIGRATIONS: ${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}
+  
 jobs:
   deploy_back_end:
     runs-on: ubuntu-latest
@@ -77,5 +52,5 @@ jobs:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj      
-          DISCORD_EMBEDS: "${{ toJSON(env.DISCORD_MESSAGE) }}"
+          DISCORD_EMBEDS: '[{ "title": "Notificação Deployment", "color": 1127128, "fields": [{ "name": "Deploy", "value": "Homologação", "inline": true }, { "name": "Branch", "value": "${{ github.event.inputs.branch }}", "inline": true }, { "name": "Back-end", "value": "${{ env.DISCORD_BACKEND }}" }, { "name": "Front-end", "value": "${{ env.DISCORD_FRONTEND }}" }, { "name": "Migrations", "value": "${{ env.DISCORD_MIGRATIONS }}" } ] }]'
         uses: Ilshidur/action-discord@master
