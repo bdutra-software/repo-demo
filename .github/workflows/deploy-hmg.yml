@@ -48,5 +48,15 @@ jobs:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj       
-          DISCORD_EMBEDS: '[{"title":"Deploy", "description": "Deploy: Homologação\nBranch: ${{ github.event.inputs.branch }}\n\n:white_check_mark: Back-end\n:white_check_mark: Front-end\n:white_check_mark: Migrations", "color":1127128 }]'
+          DISCORD_EMBEDS: |
+            '[{
+               "title":"Deploy", 
+               "description": 
+                    "Deploy: Homologação\n
+                    Branch: ${{ github.event.inputs.branch }}\n\n
+                    ${{ github.event.inputs.backend    == 'true' && ':white_check_mark:' || ':x:' }} Back-end\n
+                    ${{ github.event.inputs.frontend   == 'true' && ':white_check_mark:' || ':x:' }} Front-end\n
+                    ${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }} Migrations", 
+                    "color":1127128 
+              }]'
         uses: Ilshidur/action-discord@master
