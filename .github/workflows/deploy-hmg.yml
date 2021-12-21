@@ -19,7 +19,36 @@ on:
         type: boolean
         description: 'Migrations'
         default: 'false'
- 
+env:
+  DISCORD_MESSAGE: |
+      [{
+        "title": "Notificação Deployment",
+        "color": 1127128,
+        "fields": [{
+            "name": "Deploy",
+            "value": "Homologação",
+            "inline": true
+          },
+          {
+            "name": "Branch",
+            "value": "${{ github.event.inputs.branch }}",
+            "inline": true
+          },
+          {
+            "name": "Back-end",
+            "value": "${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}"
+          },
+          {
+            "name": "Front-end",
+            "value": "${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}"
+          },
+          {
+            "name": "Migrations",
+            "value": "${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}"
+          }               
+        ]
+      }] 
+
 jobs:
   deploy_back_end:
     runs-on: ubuntu-latest
@@ -43,37 +72,6 @@ jobs:
       runs-on: ubuntu-latest
       needs: deploy_back_end
       steps:
-      - name: Set message
-        env:
-          DISCORD_MESSAGE: |
-              [{
-                "title": "Notificação Deployment",
-                "color": 1127128,
-                "fields": [{
-                    "name": "Deploy",
-                    "value": "Homologação",
-                    "inline": true
-                  },
-                  {
-                    "name": "Branch",
-                    "value": "${{ github.event.inputs.branch }}",
-                    "inline": true
-                  },
-                  {
-                    "name": "Back-end",
-                    "value": "${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}"
-                  },
-                  {
-                    "name": "Front-end",
-                    "value": "${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}"
-                  },
-                  {
-                    "name": "Migrations",
-                    "value": "${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}"
-                  }               
-                ]
-              }]
-        run: echo "${{ toJSON(env.DISCORD_MESSAGE) }}"
       - name: Discord Notification
         env:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
