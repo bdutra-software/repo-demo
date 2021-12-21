@@ -25,5 +25,5 @@ jobs:
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj
-          DISCORD_EMBEDS: '[ "author": { "name": "${{ github.event.sender.login }}", "url":  "${{ github.event.sender.avatar_url }}" },{ "title":"Deploy", "description": "Deploy: Homologação\nBranch: ${{ github.event.inputs.branch }}\n\n:white_check_mark: Back-end\n:white_check_mark: Front-end\n:white_check_mark: Migrations", "color":1127128 }]'
+          DISCORD_EMBEDS: '[{"author": { "name": ${{ github.event.sender.login }}, "url":  ${{ github.event.sender.avatar_url }} }, "title":"Deploy", "description": "Deploy: Homologação\nBranch: ${{ github.event.inputs.branch }}\n\n:white_check_mark: Back-end\n:white_check_mark: Front-end\n:white_check_mark: Migrations", "color":1127128 }]'
         uses: Ilshidur/action-discord@master
