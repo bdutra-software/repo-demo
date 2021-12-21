@@ -50,7 +50,7 @@ jobs:
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj       
           DISCORD_EMBEDS: |
             [{
-              "title": "Deploy",
+              "title": "Notificação Deployment",
               "color": 1127128,
               "fields": [{
                   "name": "Deploy",
@@ -61,7 +61,19 @@ jobs:
                   "name": "Branch",
                   "value": "${{ github.event.inputs.branch }}",
                   "inline": true
-                }
+                },
+                {
+                  "name": "Back-end",
+                  "value": "${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}",
+                },
+                {
+                  "name": "Front-end",
+                  "value": "${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}",
+                },
+                {
+                  "name": "Migrations",
+                  "value": "${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}",
+                }               
               ]
             }]
         uses: Ilshidur/action-discord@master
