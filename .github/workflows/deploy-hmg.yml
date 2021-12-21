@@ -77,5 +77,5 @@ jobs:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj      
-          DISCORD_EMBEDS: ${{ toJSON(env.DISCORD_MESSAGE) }}
+          DISCORD_EMBEDS: "${{ toJSON(env.DISCORD_MESSAGE) }}"
         uses: Ilshidur/action-discord@master
