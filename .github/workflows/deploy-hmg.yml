@@ -7,6 +7,18 @@ on:
         description: 'Branch'     
         required: true
         default: 'hmg'
+      backend:
+        type: boolean
+        description: 'Back-end'
+        default: 'true'
+      frontend:
+        type: boolean
+        description: 'Front-end'
+        default: 'true'
+      migrations:
+        type: boolean
+        description: 'Migrations'
+        default: 'false'
  
 jobs:
   deploy_back_end:
