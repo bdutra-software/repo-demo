@@ -49,14 +49,19 @@ jobs:
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj       
           DISCORD_EMBEDS: |
-            [
-              {
-               "title":"Deploy", 
-               "color":1127128, 
-               "description": "
-                    Deploy: Homologação\n
-                    Branch: ${{ github.event.inputs.branch }}\n\n                 
-                    "
-              }
-            ]
+            [{
+              "title": "Deploy",
+              "color": 1127128,
+              "fields": [{
+                  "name": "Deploy",
+                  "value": "Homologação",
+                  "inline": true
+                },
+                {
+                  "name": "Branch",
+                  "value": "${{ github.event.inputs.branch }}",
+                  "inline": true
+                }
+              ]
+            }]
         uses: Ilshidur/action-discord@master
