@@ -45,6 +45,9 @@ jobs:
       steps:
       - name: Discord notification
         env:
+          DISCORD_BACKEND: ${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}
+          DISCORD_FRONTEND: ${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}
+          DISCORD_MIGRATIONS: ${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
           DISCORD_AVATAR: ${{ github.event.sender.avatar_url }}
           DISCORD_WEBHOOK: https://discord.com/api/webhooks/922863787365781524/HjtXWxAwk1UjoLOWd0XpwjiIsRrUars_b3vty6t7_zzgNyeJDCbR-TxudH2_dbsMlgkj       
@@ -64,15 +67,15 @@ jobs:
                 },
                 {
                   "name": "Back-end",
-                  "value": "${{ github.event.inputs.backend == 'true' && ':white_check_mark:' || ':x:' }}",
+                  "value": "${{ env.DISCORD_BACKEND }}",
                 },
                 {
                   "name": "Front-end",
-                  "value": "${{ github.event.inputs.frontend == 'true' && ':white_check_mark:' || ':x:' }}",
+                  "value": "${{ env.DISCORD_FRONTEND }}",
                 },
                 {
                   "name": "Migrations",
-                  "value": "${{ github.event.inputs.migrations == 'true' && ':white_check_mark:' || ':x:' }}",
+                  "value": "${{ env.DISCORD_MIGRATIONS }}",
                 }               
               ]
             }]
