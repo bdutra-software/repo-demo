@@ -1,0 +1,16 @@
+name: Deploy Homologação
+
+on: 
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch'     
+        required: true
+        default: 'hmg'
+ 
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Branch: ${{ github.event.inputs.branch }}"
