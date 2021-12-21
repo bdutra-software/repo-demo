@@ -73,6 +73,7 @@ jobs:
                   }               
                 ]
               }]
+        run: echo "${{ toJSON(env.DISCORD_MESSAGE) }}"
       - name: Discord Notification
         env:
           DISCORD_USERNAME: ${{ github.event.sender.login }}   
