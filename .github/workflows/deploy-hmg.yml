@@ -14,3 +14,6 @@ jobs:
     steps:
     - run: |
         echo "Branch: ${{ github.event.inputs.branch }}"
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.branch }}
