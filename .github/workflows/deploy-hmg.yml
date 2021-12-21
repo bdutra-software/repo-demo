@@ -67,15 +67,15 @@ jobs:
                 },
                 {
                   "name": "Back-end",
-                  "value": "${{ env.DISCORD_BACKEND }}",
+                  "value": "${{ env.DISCORD_BACKEND }}"
                 },
                 {
                   "name": "Front-end",
-                  "value": "${{ env.DISCORD_FRONTEND }}",
+                  "value": "${{ env.DISCORD_FRONTEND }}"
                 },
                 {
                   "name": "Migrations",
-                  "value": "${{ env.DISCORD_MIGRATIONS }}",
+                  "value": "${{ env.DISCORD_MIGRATIONS }}"
                 }               
               ]
             }]
