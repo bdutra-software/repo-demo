@@ -1,4 +1,9 @@
 {
+   "branches": [
+        "main", 
+        { "name": "dev", "prerelease": "rc" },
+        { "name": "hmg", "prerelease": "beta" }
+    ],
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
